@@ -19,6 +19,7 @@ Second time, I used specaugmentation + noise
 Lastly, I used specaugmentation + noise + noise
 Espnet already has built-in speed pertubation data augmentation.
 So I used the speed perturbation (x0.9, 1, 1.1) for the augmented data. 
+![pipe line](./images/pipe_line.png)
 
 ## Run
 train_new = the original train data + augmented data from the original train data.
@@ -63,4 +64,4 @@ inference_config=conf/decode_asr.yaml
 ```
 
 ## Experimental Configurations
-![Final_result](./images/Chart.png)
+![Final result](./images/Chart.png)
