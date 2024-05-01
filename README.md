@@ -13,13 +13,44 @@ conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=
 ```
 ## Data Augmentation Preparation
 
-Baseline was simply the original libre speech data without any augmenataion techniques.
+Baseline was simply the original libre 100 speech data without any augmenataion techniques.
 First time, I used specaugmenation,
 Second time, I used specaugmentation + noise
 Lastly, I used specaugmentation + noise + noise
 Espnet already has built-in speed pertubation data augmentation.
-So I used the speed perturbation (x0.9, 1, 1.1) for the augmented data. 
+So I used the speed perturbation (x0.9, 1, 1.1) for the augmented data.
+
+
+
+
+## Overview
+
+The goal of this project is to explore the impact of different augmentation methods on the performance of ASR models. The baseline dataset is the original, unmodified Libre 100 speech data.
+
+## Augmentation Techniques
+
+We employed a series of augmentation strategies to enrich the dataset:
+
+### 1. SpecAugment
+
+The initial step involved applying SpecAugment, which manipulates the spectrogram of the audio files to create variations.
+
+### 2. SpecAugment with Noise
+
+Next, we introduced additive noise to the SpecAugmented data to simulate more challenging acoustic environments.
+
+### 3. Enhanced Noise Augmentation
+
+In a further enhancement, two layers of noise were applied in conjunction with SpecAugment to test the robustness of our ASR models against background interference.
+
+### 4. Speed Perturbation
+
+Using ESPnet’s built-in feature, we adjusted the speed of the audio playback at rates of 0.9x, 1x, and 1.1x, providing a form of pitch and tempo variation.
+
 ![pipeline](./images/pipeline.png)
+
+
+
 
 ## Run
 train_new = the original train data + augmented data from the original train data.
