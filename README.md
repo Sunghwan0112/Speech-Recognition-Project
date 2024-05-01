@@ -12,14 +12,14 @@ pip install tqdm
 conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 ## Data Augmentation Preparation
-```
+
 Baseline was simply the original libre speech data without any augmenataion techniques.
-The Espnet already had built-in speech pertubation data augmentation.
-Top on that, 
-First I used specaugmenation,
-Second I used specaugmentation + noise
-Then I used specaugmentation + noise + noise
-```
+First time, I used specaugmenation,
+Second time, I used specaugmentation + noise
+Lastly, I used specaugmentation + noise + noise
+Espnet already has built-in speed pertubation data augmentation.
+So I used the speed perturbation (x0.9, 1, 1.1) for the augmented data. 
+
 ## Run
 train_new = the original train data + augmented data from the original train data.
 I Combined the both data for training. 
