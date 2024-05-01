@@ -11,25 +11,21 @@ conda activate aug
 pip install tqdm
 conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
-
+## Data Augmentation Preparation
+```
+Baseline was simply the original libre speech data without any augmenataion techniques.
+The Espnet already had built-in speech pertubation data augmentation.
+Top on that, 
+First I used specaugmenation,
+Second I used specaugmentation + noise
+Then I used specaugmentation + noise + noise
+```
 ## Run
-```
-python main.py --config [path/to/config] --nprocs [number of processes]
-python normalize.py --src_dset [dataset] --nprocs [number of processes]
-cd ../
-bash utils/combine_data.sh [combined_path] [normalized_path] [aug_path]
-```
-The normalization of original training, dev, and test datasets can be run only once. An example of using `noise.json` can be:
-```
-srun -p RM-shared -t 5:00:00 --ntasks-per-node=1 run.sh # python main.py --config noise.json --nprocs 8
-srun -p RM-shared -t 5:00:00 --ntasks-per-node=1 run1.sh # normalize dev
-srun -p RM-shared -t 5:00:00 --ntasks-per-node=1 run2.sh # normalize test
-srun -p RM-shared -t 5:00:00 --ntasks-per-node=1 run3.sh # normalize train_clean_100
-cd ../
-bash utils/combine_data.sh data/train_aug-noise data/train_clean_100-noise data/train_clean_100-normalized # combine train
-bash utils/combine_data.sh data/dev_norm data/dev_clean-normalized data/dev_other-normalized # combine dev
-```
-Then in `run_aug-noise.sh`:
+train_new = the original train data + augmented data from the original train data.
+I Combined the both data for training. 
+Combination of the files are then stored in train_new folder.
+
+Then in `run.sh`:
 ```
 #!/usr/bin/env bash
 # Set bash to 'debug' mode, it will exit on :
@@ -38,23 +34,22 @@ set -e
 set -u
 set -o pipefail
 
-train_set="train_aug-noise"
-valid_set="dev_norm"
-test_sets="test_clean-normalized test_other-normalized dev_clean-normalized dev_other-normalized"
+train_set="train_new"
+valid_set="dev"
+test_sets="test_clean test_other dev_clean dev_other"
 
 asr_config=conf/train_asr.yaml
 inference_config=conf/decode_asr.yaml
 
 ./asr.sh \
-    --stage 3 --stop-stage 13 \
-    --batch_size 1 \
     --lang en \
     --ngpu 1 \
-    --nj 8 \
+    --nj 16 \
     --gpu_inference true \
-    --inference_nj 8 \
+    --inference_nj 2 \
     --nbpe 5000 \
     --max_wav_duration 30 \
+    --speed_perturb_factors "0.9 1.0 1.1" \
     --audio_format "flac.ark" \
     --feats_type raw \
     --use_lm false \
@@ -63,16 +58,17 @@ inference_config=conf/decode_asr.yaml
     --train_set "${train_set}" \
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
-    --asr_stats_dir "exp/${train_set}_stats" \
-    --asr_exp "exp/${train_set}_train" \
     --lm_train_text "data/${train_set}/text" \
     --bpe_train_text "data/${train_set}/text" "$@"
 ```
+
 ## Experimental Configurations
+1st augmenatation technique = Speed + Specaugmentation 
+
 | Config | CER (dev_clean) | CER (dev_other) | CER (test_clean) | CER (test_other) |
 |:------:|:---------------:|:---------------:|:----------------:|:----------------:|
 |Baseline|3.1              |10.8             |3.2               |10.8              |
-|Effect  |2.9              |9.2              |3.0               |9.3               |
+|Spe  |2.9              |9.2              |3.0               |9.3               |
 |Reverb  |3.5              |10.2             |3.4               |10.1              |
 |Noise   |2.8              |9.1              |2.8               |9.2               |
 |Scenes  |3.0              |9.3              |3.1               |9.4               |
