@@ -63,12 +63,4 @@ inference_config=conf/decode_asr.yaml
 ```
 
 ## Experimental Configurations
-1st augmenatation technique = Speed + Specaugmentation 
-
-| Config | CER (dev_clean) | CER (dev_other) | CER (test_clean) | CER (test_other) |
-|:------:|:---------------:|:---------------:|:----------------:|:----------------:|
-|Baseline|3.1              |10.8             |3.2               |10.8              |
-|Spe  |2.9              |9.2              |3.0               |9.3               |
-|Reverb  |3.5              |10.2             |3.4               |10.1              |
-|Noise   |2.8              |9.1              |2.8               |9.2               |
-|Scenes  |3.0              |9.3              |3.1               |9.4               |
+![Final_result](./images/Chart.png)
