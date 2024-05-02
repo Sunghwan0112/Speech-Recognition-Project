@@ -90,5 +90,4 @@ inference_config=conf/decode_asr.yaml
     --bpe_train_text "data/${train_set}/text" "$@"
 ```
 
-## Experimental Configurations
 ![Final result](./images/result.png)
