@@ -1,6 +1,5 @@
 # 18751-Speech-Recognition-Project
 Data Augmentation with Various Distortions Prepared by Torchaudio.
-# Authors and Acknowledgements
 
 ## Code Contributors
 
