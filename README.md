@@ -4,7 +4,7 @@ Data Augmentation with Various Distortions Prepared by Torchaudio.
 ## Environment
 ```
 cd espnet-path/egs2/librispeech_100/asr1
-git clone https://github.com/chxw20/11751-Speech-Recognition-Project.git project
+git clone https://github.com/Sunghwan0112/Speech-Recognition-Project.git project
 cd project
 conda create -n aug python=3.9
 conda activate aug
