@@ -1,16 +1,38 @@
 # 18751-Speech-Recognition-Project
 Data Augmentation with Various Distortions Prepared by Torchaudio.
 
-## Environment
-```
-cd espnet-path/egs2/librispeech_100/asr1
+# Speech Recognition Project Setup
+
+## Overview
+
+This section provides detailed instructions on how to set up the environment for the Speech Recognition Project using the ESPnet framework. This setup is crucial for ensuring that the project runs smoothly and efficiently on your machine.
+
+## Environment Setup Instructions
+
+### Step 1: Clone the Project Repository
+
+Navigate to your ESPnet working directory and clone the project repository:
+
+```bash
+cd <espnet-path>/egs2/librispeech_100/asr1
 git clone https://github.com/Sunghwan0112/Speech-Recognition-Project.git project
 cd project
+```
+
+### Step 2: Create and Activate a Conda Environment
+
+Create a new Conda environment named aug and activate it:
+```
 conda create -n aug python=3.9
 conda activate aug
+```
+### Step 3: Install Dependencies
+Install the necessary Python packages using pip and conda:
+```
 pip install tqdm
 conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
+
 # Speech Data Augmentation for ASR
 
 ## Overview
