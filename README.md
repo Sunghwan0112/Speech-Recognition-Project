@@ -37,7 +37,7 @@ The goal of this project is to explore the impact of different augmentation tech
 ### 4. Speed Perturbation
 
 #### Tempo Adjustment
-- **Description**: The final step involves altering the playback speed of the audio files at rates of 0.9x, 1.0x, and 1.1x. This changes both pitch and tempo of the speech, providing diverse training samples that help ASR models learn to recognize speech variations more effectively.
+- **Description**: The final step involves altering the playback speed of the audio files at rates of 0.9x, 1.0x, and 1.1x. This changes tempo of the speech, providing diverse training samples that help ASR models learn to recognize speech variations more effectively.
 
 
 ![pipeline](./images/pipeline.png)
