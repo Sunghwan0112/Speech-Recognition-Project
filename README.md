@@ -1,5 +1,18 @@
 # 18751-Speech-Recognition-Project
 Data Augmentation with Various Distortions Prepared by Torchaudio.
+# Authors and Acknowledgements
+
+## Code Contributors
+
+This project was developed through the collaborative efforts of the following developers:
+
+- **Sunghwan Baek** - Initial work and ongoing maintenance of the project.
+- **Xiwen Chen** - Contributed to several key components of the code. Xiwen's contributions can be specifically found at [Xiwen Chen's Branch of the Project](https://github.com/chxw20/11751-Speech-Recognition-Project/tree/aug).
+
+## Contact
+
+For any inquiries, suggestions, or contributions, please feel free to contact Sunghwan Baek or check out the project repository on GitHub.
+
 
 # Speech Recognition Project Setup
 
