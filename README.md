@@ -32,7 +32,11 @@ Install the necessary Python packages using pip and conda:
 pip install tqdm
 conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
-
+### Step 4: Verify Installation
+To ensure that all components have been installed correctly, run the following command to check the PyTorch version:
+```
+python -c "import torch; print(torch.__version__)"
+```
 # Speech Data Augmentation for ASR
 
 ## Overview
