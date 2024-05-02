@@ -11,41 +11,40 @@ conda activate aug
 pip install tqdm
 conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
-## Data Augmentation Preparation
-
-Baseline was simply the original libre 100 speech data without any augmenataion techniques.
-First time, I used specaugmenation,
-Second time, I used specaugmentation + noise
-Lastly, I used specaugmentation + noise + noise
-Espnet already has built-in speed pertubation data augmentation.
-So I used the speed perturbation (x0.9, 1, 1.1) for the augmented data.
-
-
-
+# Speech Data Augmentation for ASR
 
 ## Overview
 
-The goal of this project is to explore the impact of different augmentation methods on the performance of ASR models. The baseline dataset is the original, unmodified Libre 100 speech data.
+The goal of this project is to explore the impact of different augmentation techniques on the performance of automatic speech recognition (ASR) models. Our baseline dataset is the clean, unmodified Libre 100 speech data. We aim to enrich this dataset using various augmentation methods to simulate different acoustic environments, thus testing and improving the robustness of ASR models.
 
 ## Augmentation Techniques
 
-We employed a series of augmentation strategies to enrich the dataset:
+### 1. Noise Addition
 
-### 1. SpecAugment
+#### First Layer of Noise
+- **Description**: Clean speech data is initially mixed with a noise signal. This introduces basic environmental noise conditions into the clean speech data, mimicking more realistic and challenging listening scenarios.
 
-The initial step involved applying SpecAugment, which manipulates the spectrogram of the audio files to create variations.
+### 2. Reverberation
 
-### 2. SpecAugment with Noise
+#### Reverberation Addition
+- **Description**: Following the addition of noise, the speech data undergoes reverberation processing. This simulates the echo effects present in various indoor and outdoor environments, further complicating the acoustic properties of the speech signals.
 
-Next, we introduced additive noise to the SpecAugmented data to simulate more challenging acoustic environments.
+### 3. SpecAugment
 
-### 3. Enhanced Noise Augmentation
-
-In a further enhancement, two layers of noise were applied in conjunction with SpecAugment to test the robustness of our ASR models against background interference.
+#### Spectrogram Manipulation
+- **Description**: After the noise and reverberation enhancements, SpecAugment is applied to the audio files. This technique alters the spectrogram by masking certain frequency bands and warping the time axis, creating a variety of speech patterns to train more adaptable ASR systems.
 
 ### 4. Speed Perturbation
 
-Using ESPnet’s built-in feature, we adjusted the speed of the audio playback at rates of 0.9x, 1x, and 1.1x, providing a form of pitch and tempo variation.
+#### Tempo Adjustment
+- **Description**: The final step involves altering the playback speed of the audio files at rates of 0.9x, 1.0x, and 1.1x. This changes both pitch and tempo of the speech, providing diverse training samples that help ASR models learn to recognize speech variations more effectively.
+
+## Contributing
+Contributions to this project are welcome! You can assist by providing additional augmentation strategies, improving the existing methods, or testing the dataset with different ASR models. Please fork this repository and submit your pull requests for review.
+
+## License
+This project is released under the MIT License. See the LICENSE file for more details.
+
 
 ![pipeline](./images/pipeline.png)
 
