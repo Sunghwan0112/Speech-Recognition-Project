@@ -39,12 +39,6 @@ The goal of this project is to explore the impact of different augmentation tech
 #### Tempo Adjustment
 - **Description**: The final step involves altering the playback speed of the audio files at rates of 0.9x, 1.0x, and 1.1x. This changes both pitch and tempo of the speech, providing diverse training samples that help ASR models learn to recognize speech variations more effectively.
 
-## Contributing
-Contributions to this project are welcome! You can assist by providing additional augmentation strategies, improving the existing methods, or testing the dataset with different ASR models. Please fork this repository and submit your pull requests for review.
-
-## License
-This project is released under the MIT License. See the LICENSE file for more details.
-
 
 ![pipeline](./images/pipeline.png)
 
