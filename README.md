@@ -95,4 +95,4 @@ inference_config=conf/decode_asr.yaml
 ```
 
 ## Experimental Configurations
-![Final result](./images/Chart.png)
+![Final result](./images/result.png)
