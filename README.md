@@ -43,14 +43,17 @@ The goal of this project is to explore the impact of different augmentation tech
 ![pipeline](./images/pipeline.png)
 
 
+### Training Data
+The `train_new` dataset is a combination of the original clean speech data and its augmented versions. This dataset is constructed to enhance the robustness of the ASR model by exposing it to a variety of acoustic environments.
 
+**Procedure**:
+- Combine the original training data with the augmented data.
+- Store the combined dataset in the `train_new` folder for training purposes.
 
-## Run
-train_new = the original train data + augmented data from the original train data.
-I Combined the both data for training. 
-Combination of the files are then stored in train_new folder.
+## Script Configuration
 
-Then in `run.sh`:
+The `run.sh` script configures and initiates the training and testing process for the ASR model.
+
 ```
 #!/usr/bin/env bash
 # Set bash to 'debug' mode, it will exit on :
